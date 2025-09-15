@@ -34,7 +34,3 @@ Das Projekt verbindet ein **Vue.js Frontend**, ein **Backend API**, eine **Daten
 ## 🚀 Quickstart (Frontend)
 
 1. Node.js und npm installieren
-2. Repository klonen
-   ```bash
-   git clone <repo-url>
-   cd datalens-frontend
