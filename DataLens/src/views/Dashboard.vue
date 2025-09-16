@@ -35,16 +35,19 @@
 
 <style scoped>
 .dashboard {
-  padding: 0;
-  margin: 0;
-  width: 100vw;
+  margin: 0 auto;
+  width: 100%;
+  min-height: calc(100vh - 56px); /* Höhe des Headers abziehen */
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 .kpi-row {
   display: flex;
   gap: 0;
   margin: 0;
   flex-wrap: wrap;
+  width: 100%;
 }
 .kpi-card {
   background: #f8f8f8;
@@ -61,18 +64,23 @@
   gap: 0;
   flex-wrap: wrap;
   margin: 0;
+  width: 100%;
+  flex: 1;
 }
 .chart-card {
   background: #fff;
   border-radius: 8px;
   padding: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  flex: 1 1 300px;
+  flex: 1 1 0;
   min-width: 200px;
   margin: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 .chart-placeholder {
-  height: 200px;
+  flex: 1;
   background: #f2f2f2;
   border-radius: 4px;
   display: flex;
@@ -84,13 +92,19 @@
 }
 @media (max-width: 900px) {
   .dashboard {
-    width: 100vw;
-    padding: 0;
+    width: 100%;
+    min-height: calc(100vh - 56px);
+    padding: 1rem;
   }
   .kpi-row, .chart-row {
     flex-direction: column;
     gap: 0;
     margin: 0;
+    width: 100%;
+  }
+  .chart-card {
+    min-width: unset;
+    height: 200px;
   }
 }
 </style>

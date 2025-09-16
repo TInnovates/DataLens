@@ -7,8 +7,6 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="nav-bar">
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="40" height="40" />
       <nav class="main-nav">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
         <RouterLink to="/dashboard">Dashboard</RouterLink>
       </nav>
     </div>
@@ -70,11 +68,11 @@ header {
 }
 
 .content {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: 80vw;
+  margin: 0 auto;
   box-sizing: border-box;
-  min-height: 100vh;
   padding-top: 56px; /* Höhe des Headers, damit Inhalt nicht darunter liegt */
 }
 </style>
