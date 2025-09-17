@@ -1,18 +1,18 @@
 <template>
-  <section class="dashboard">
+  <section v-if="kpiData" class="dashboard">
     <h1>Dashboard</h1>
     <div class="kpi-row">
-      <div class="kpi-card">
+      <div  class="kpi-card">
         <h2>Umsatz</h2>
-        <p>€ 12.340</p>
+        <p>{{ kpiData.revenue }}</p>
       </div>
       <div class="kpi-card">
         <h2>Besucher</h2>
-        <p>1.234</p>
+        <p>{{ kpiData.visitors }}</p>
       </div>
       <div class="kpi-card">
         <h2>Conversion Rate</h2>
-        <p>4,5%</p>
+        <p>{{ kpiData.conversion }}</p>
       </div>
     </div>
     <div class="chart-row">
@@ -27,10 +27,26 @@
       </div>
     </div>
   </section>
+
+  <section v-else class="dashboard">
+    <h1>Lade KPIs ...</h1>
+  </section>
 </template>
 
 <script setup lang="ts">
-// Hier kannst du später Props, State oder API-Calls ergänzen
+import { onMounted, ref } from 'vue';
+
+const kpiData = ref<{ revenue: number; visitors:number; conversion: number } | null >(null)
+
+onMounted(async () => {
+  try {
+    const response = await fetch('/mock-kpi.json');
+    kpiData.value = await response.json();
+  } catch (error) {
+    console.error('Fehler beim Laden der KPIs:', error);
+  }
+});
+
 </script>
 
 <style scoped>
