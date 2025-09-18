@@ -1,7 +1,12 @@
-version: '3.8'
+version: "3.8"
 services:
   backend:
-    build: .
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
-      - '5000:5000'
+      - "5000:5000"
     restart: unless-stopped
+    environment:
+      - NODE_ENV=production

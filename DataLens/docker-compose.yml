@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  frontend:
+    image: frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '8080:80'
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # Optional: volumes for live reload during development
+    # volumes:
+    #   - ./src:/app/src
+    #   - ./public:/app/public

@@ -5,10 +5,15 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/dashboard',
-      name: 'dashboard',
+      path: '/',
+      name: 'home',
       component: Dashboard,
     },
+    // {
+    //   path: '/dashboard',
+    //   name: 'dashboard',
+    //   component: Dashboard,
+    // },
   ],
 })
 
