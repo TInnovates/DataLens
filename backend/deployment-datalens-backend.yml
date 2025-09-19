@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datalens-backend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: datalens-backend
+  template:
+    metadata:
+      labels:
+        app: datalens-backend
+    spec:
+      containers:
+      - name: datalens-backend
+        image: datalens-backend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000

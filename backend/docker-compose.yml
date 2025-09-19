@@ -1,12 +1,23 @@
 version: "3.8"
 services:
   backend:
-    image: backend
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
-    restart: unless-stopped
     environment:
       - NODE_ENV=production
+      - MONGO_URL=mongodb://mongo:27017/datalens
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
