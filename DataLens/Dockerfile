@@ -6,8 +6,11 @@ FROM node:20 AS build
 # Setzt das Arbeitsverzeichnis.
 WORKDIR /app
 
-# Kopiert die package.json und installiert die Abhängigkeiten.
+# Kopiert die package.json und die .env
 COPY package*.json ./
+COPY .env .env
+
+# Installiert die Abhängigkeiten.
 RUN npm install
 
 # Kopiert den Quellcode und baut das Projekt.

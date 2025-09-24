@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 
 const mongoose = require('mongoose');
-const mongoUrl = process.env.MONGO_URL || 'mongodb://localhost:27017/datalens';
+const mongoUrl = process.env.MONGO_URL || 'mongodb://mongo-service:27017/datalens';
 
 
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })

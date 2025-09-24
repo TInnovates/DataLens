@@ -182,7 +182,8 @@ const topChannels = ref<TopChannel[]>([]);
 // Beispiel: Backend-API kann hier weiterhin genutzt werden, um die Daten dynamisch zu laden
 onMounted(async () => {
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    // KORREKTUR: Basis-URL verwenden, nicht mit /api/kpi in der Umgebungsvariable!
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://datalens-backend-service:5000';
     const response = await fetch(`${apiUrl}/api/kpi`);
     const data = await response.json();
     if (data && data.kpis) {
@@ -208,7 +209,6 @@ onMounted(async () => {
     kpiData.value = null;
   }
 });
-
 </script>
 
 <style scoped>

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: datalens-backend-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: datalens-backend
@@ -18,3 +18,6 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
+        env:
+        - name: MONGO_URL
+          value: "mongodb://mongo-service:27017/datalens"

@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: datalens-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datalens-frontend
+  template:
+    metadata:
+      labels:
+        app: datalens-frontend
+    spec:
+      containers:
+        - name: datalens-frontend
+          image: frontend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
+          env:
+            - name: VITE_API_URL
+              value: "http://datalens-backend-service:5000"
