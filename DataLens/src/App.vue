@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
     <div class="nav-bar">
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="40" height="40" />
       <nav class="main-nav">
-        <RouterLink to="/dashboard">Dashboard</RouterLink>
+        <RouterLink to="/">Dashboard</RouterLink>
       </nav>
     </div>
   </header>
@@ -67,6 +67,14 @@ header {
   background: var(--color-background-mute);
 }
 
+      .dashboard {
+        background: #f5f5f5;
+        padding: 2rem;
+        margin: 2rem;
+        height: auto;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        border-radius: 16px;
+      }
 .content {
   aspect-ratio: 16 / 9;
   width: 100%;
