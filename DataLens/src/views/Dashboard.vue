@@ -182,14 +182,15 @@ const topChannels = ref<TopChannel[]>([]);
 // Beispiel: Backend-API kann hier weiterhin genutzt werden, um die Daten dynamisch zu laden
 onMounted(async () => {
   try {
-    // KORREKTUR: Basis-URL verwenden, nicht mit /api/kpi in der Umgebungsvariable!
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://datalens-backend-service:5000';
+    // KORREKTUR: Basis-URL darf nicht verwenden, nicht mit /api/kpi in der Umgebungsvariable!
+    const apiUrl = import.meta.env.VITE_API_URL;
     const response = await fetch(`${apiUrl}/api/kpi`);
     const data = await response.json();
     if (data && data.kpis) {
       // KPI-Karten
       miniLineSeries.value = [{ data: data.kpis.contractValue }];
-      // Bar Chart
+      console.log('Mini Line Chart', miniLineOptions.chart)
+        // Bar Chart
       barSeries.value = [{ name: 'Contract Value', data: data.bar.data }];
       // Pie Chart
       pieSeries.value = data.pie;
@@ -199,8 +200,10 @@ onMounted(async () => {
       dealBarSeries.value = [{ name: 'Deals', data: data.deals }];
       // Tabelle
       topChannels.value = data.topChannels;
-      // KPI-Objekt für v-if
+      console.log('Top Channels', topChannels.value)
+        // KPI-Objekt für v-if
       kpiData.value = { revenue: data.kpis.contractValue[0], visitors: data.kpis.leadResponse[0], conversion: 9.9 };
+      
     } else {
       kpiData.value = null;
     }
@@ -215,7 +218,7 @@ onMounted(async () => {
 .chart-card--pie {
   min-width: unset;
   max-width: unset;
-  height: 200px;
+  height: 201px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -237,7 +240,7 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   background: #f5f7fa;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   padding-top: 1rem;
 }
 .kpi-row {
@@ -263,15 +266,15 @@ onMounted(async () => {
 .kpi-card:hover {
   box-shadow: 0 8px 24px rgba(0,0,0,0.13);
 }
-.kpi-card--teal {
-  background: #009999;
+.kpi-card_teal {
+  background: #0757c0;
   color: #fff;
 }
-.kpi-card--orange {
-  background: #ff9900;
+.kpi_card_bunt {
+  background: #bd7b1a;
   color: #fff;
 }
-.kpi-value {
+.kpi_value {
   font-size: 2.6rem;
   font-weight: bold;
   margin-top: 0.5rem;

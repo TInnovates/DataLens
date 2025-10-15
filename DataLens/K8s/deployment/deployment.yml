@@ -14,10 +14,10 @@ spec:
     spec:
       containers:
         - name: datalens-frontend
-          image: frontend:latest
-          imagePullPolicy: Never
+          image: frontend:v4
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           env:
             - name: VITE_API_URL
-              value: "http://datalens-backend-service:5000"
+              value: "http://127.0.0.1:5000"

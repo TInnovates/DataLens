@@ -41,7 +41,10 @@ app.get('/api/kpi', async (req, res) => {
   try {
     // Hole das erste Dokument aus der Datenbank
     const kpiData = await Kpi.findOne();
+    console.log('KPI Data requested:', kpiData);
+    
     if (!kpiData) {
+      console.log('No KPI data found');
       return res.status(404).json({ error: 'Keine KPI-Daten gefunden.' });
     }
     res.json(kpiData);
